@@ -19,17 +19,17 @@ router.post('/contact', (req, res, next)=>{
     });
     newContact.save((err, contacts)=>{
         if(err){
-            res.json({msg: 'Failed to add contact'});
+            res.json({msg: 'Failed to add'});
         }
         else{
-            res.json({msg: 'Contact added successfully'});
+            res.json(contacts);
         }
     });
 });
 
 //delete contacts data
 router.delete('/contact/:id', (req, res, next)=>{
-    Contact.remove({_id: req.params.id}, function(err, result){
+    Contact.deleteOne({_id: req.params.id}, function(err, result){
         if(err){
             res.json(err);
         }
